@@ -35,13 +35,13 @@ The command-line PDFExtract is contained in the PDFExtract.jar package that may 
 For extracting a PDF file to the alignment optimized HTML file type:
 
 ```sh
-java -jar PDFExtract.jar -I <input_file> -O <output_file> -B <batch_file> -L [<log_path>] -R [<rule_path>] -T [<number_threads>] -LANG [<language>] -o [<options>]
+java -jar PDFExtract.jar -I <input_file> -O <output_file> -B <batch_file> -L [<log_folder_path>] -R [<rule_path>] -T [<number_threads>] -LANG [<language>] -o [<options>]
 ```
 *Arguments*
 - `-I <input_file>` specifies the path to the source PDF file process for extraction. 
 - `-O <output_file>` specifies the path to the output HTML file after extraction. 
 - `-B <batch_file>` specifies the path to the batch file for processing list of files. The input file and output file are specified on the same line delimited by a tab. Each line is delimited by a new line character.
-- `-L <log_path>` specifies the path to write the log file to. As it is common for PDF files to have issues when processing such as being password protected or other forms of restricted permissions, the log file can be written to a specifed location for additional processing. If not specified, then the log file will write to stdout.
+- `-L <log_folder_path>` specifies the path to write the log file to. As it is common for PDF files to have issues when processing such as being password protected or other forms of restricted permissions, the log file can be written to a specifed location for additional processing. If not specified, then the log file will write to stdout.
 - `-R <rule_path>` specifies a custom set of rules to process joins between lines. As this can vary considerably between languages, a custom set of rules can be implimented. See [Joining Lines](#joining-lines) for more details. If no path is specified, then PDFExtract.js will be loaded from the same folder as the PDFExtract.jar execution. If the PDFExtract.js file cannot be found, then processing will continue without analyzing the joins between lines.
 - `-T <number_threads>` specifies the number of threads to run concurrently when processing PDF files. One file can be processed per thread. If not specified, then the default valur of 1 thread is used.
 - `-LANG <lang>` specifies the language of the file using ISO-639-1 codes when processing. If not specified then the default language rules will be used. 
@@ -59,7 +59,7 @@ java -jar PDFExtract.jar -I /test/pdf/myfile.pdf -O /test/htm/myfile.htm -LANG e
 This example processes a batch of files as specified in `batch2.txt` using 3 threads and writing to a user specified log file. Custom JavaScript rules for sentence joining and object sequence repairs is also specified.
 
 ```sh
-java -jar PDFExtract.jar -B /test/batchlists/batch2.txt -L /tests/logs/batch2.log -R /test/customrules/ruleset1.js -T 3 
+java -jar PDFExtract.jar -B /test/batchlists/batch2.txt -L /tests/logs/ -R /test/customrules/ruleset1.js -T 3 
 ```
 
 The contents of `batch2.txt` are:
